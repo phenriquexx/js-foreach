@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hudson JS</title>
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #iniciar {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            border: none;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #iniciar:hover {
+            background-color: #45a049;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+    </head>
+
+    <body>
+        <h1>ForEach - Dobro de Números</h1>
+
+        <label for="numeroUsuario">Digite um número:</label>
+        <input type="number" id="numeroUsuario">
+        <button id="iniciar">Iniciar</button>
+        <ul id="lista"></ul>
+
+        <script>
+            // Array de exemplo
+            const numeros = [1, 2, 3, 4, 5];
+
+            // Função para interagir com o usuário
+            function interagir(numero) {
+                const resultado = numero * 2; // Operação matemática simples
+                const listar = document.createElement('li');
+                listar.textContent = `O dobro de ${numero} é ${resultado}`;
+                document.getElementById('lista').appendChild(listar);
+            }
+
+            // Função de callback para o forEach
+            function callback(numero) {
+                interagir(numero);
+            }
+
+            // Associando a função ao botão
+            document.getElementById('iniciar').addEventListener('click', function () {
+                // Obter o número digitado pelo usuário
+                const numeroDigitado = parseInt(document.getElementById('numeroUsuario').value);
+
+                // Verificar se o número digitado é válido (um número válido após a conversão)
+                if (!isNaN(numeroDigitado)) {
+                    // Criar um array com o número digitado pelo usuário
+                    const numeros = [numeroDigitado];
+
+                    // Iterar pelo array de números usando forEach e chamar a função de callback para cada número
+                    numeros.forEach(callback);
+                }
+            });
+        </script>
+
+    </body>
+
+</html>
